@@ -49,6 +49,22 @@
                     <exclude>META-INF/MANIFEST.MF</exclude>
                   </excludes>
                 </filter>
+                <filter>
+                  <artifact>com.ibm.icu:icu4j</artifact>
+                  <excludes>
+                    <exclude>com/ibm/icu/impl/data/icudt74b/*.res</exclude>
+                    <exclude>com/ibm/icu/impl/data/icudt74b/**/*.res</exclude>
+                    <exclude>com/ibm/icu/impl/data/icudt74b/brkitr/**</exclude>
+                    <exclude>com/ibm/icu/impl/data/icudt74b/coll/**</exclude>
+                    <exclude>com/ibm/icu/impl/data/icudt74b/*.nrm</exclude>
+                    <exclude>com/ibm/icu/impl/data/icudt74b/*.spp</exclude>
+                    <exclude>com/ibm/icu/impl/data/icudt74b/*.cfu</exclude>
+                    <exclude>com/ibm/icu/impl/data/icudt74b/uemoji.icu</exclude>
+                    <exclude>com/ibm/icu/impl/data/icudt74b/unames.icu</exclude>
+                    <exclude>com/ibm/icu/impl/data/icudt74b/pnames.icu</exclude>
+                    <exclude>com/ibm/icu/impl/data/icudt74b/ulayout.icu</exclude>
+                  </excludes>
+                </filter>
               </filters>
               <transformers>
                 <transformer />

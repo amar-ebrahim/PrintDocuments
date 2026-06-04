@@ -70,6 +70,32 @@
                                         <exclude>META-INF/MANIFEST.MF</exclude>
                                     </excludes>
                                 </filter>
+                                <!-- Strip ICU4J locale/collation/break data that ArabicShaping never reads.
+                                     ArabicShaping only needs ubidi.icu and uprops.icu (kept below). -->
+                                <filter>
+                                    <artifact>com.ibm.icu:icu4j</artifact>
+                                    <excludes>
+                                        <!-- ~3850 per-locale resource bundles (date/number/currency data) -->
+                                        <exclude>com/ibm/icu/impl/data/icudt74b/*.res</exclude>
+                                        <exclude>com/ibm/icu/impl/data/icudt74b/**/*.res</exclude>
+                                        <!-- Word-break dictionaries (Thai, Lao, Khmer, Burmese, CJK) -->
+                                        <exclude>com/ibm/icu/impl/data/icudt74b/brkitr/**</exclude>
+                                        <!-- Collation tables -->
+                                        <exclude>com/ibm/icu/impl/data/icudt74b/coll/**</exclude>
+                                        <!-- Normalisation data (NFC/NFKC) -->
+                                        <exclude>com/ibm/icu/impl/data/icudt74b/*.nrm</exclude>
+                                        <!-- StringPrep profiles (IDNA, XMPP, etc.) -->
+                                        <exclude>com/ibm/icu/impl/data/icudt74b/*.spp</exclude>
+                                        <!-- Confusables / UTS-46 -->
+                                        <exclude>com/ibm/icu/impl/data/icudt74b/*.cfu</exclude>
+                                        <!-- Specific unused .icu data files
+                                             ubidi.icu and uprops.icu are KEPT — ArabicShaping needs them -->
+                                        <exclude>com/ibm/icu/impl/data/icudt74b/uemoji.icu</exclude>
+                                        <exclude>com/ibm/icu/impl/data/icudt74b/unames.icu</exclude>
+                                        <exclude>com/ibm/icu/impl/data/icudt74b/pnames.icu</exclude>
+                                        <exclude>com/ibm/icu/impl/data/icudt74b/ulayout.icu</exclude>
+                                    </excludes>
+                                </filter>
                             </filters>
                             <transformers>
                                 <!-- Merge SPI service descriptors (required for PDFBox font parsers) -->
